@@ -5,34 +5,27 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Выберите операцию");
-        System.out.println("1) Сложение");
-        System.out.println("2) Вычитание");
-        System.out.println("3) Умножение");
-        System.out.println("4) Деление");
+        System.out.println("Выберите операцию\n1) Сложение\n2) Вычитание\n3) Умножение\n4) Деление");
 
-        Scanner scanner = new Scanner(System.in);
-        int operation = scanner.nextInt();
+        int operation = new Scanner(System.in).nextInt();
 
         if (operation < 1 || operation > 4) {
             System.out.println("Введена некорректная операция");
-        } else {
-            System.out.println("Введите число a");
-            float a = scanner.nextInt();
-            System.out.println("Введите число b");
-            float b = scanner.nextInt();
-            float result;
-
-            if (operation == 1) {
-                result = a + b;
-            } else if (operation == 2) {
-                result = a - b;
-            } else if (operation == 3) {
-                result = a * b;
-            } else {
-                result = a / b;
-            }
-            System.out.println("Результат: " + result);
+            return;
         }
+
+        System.out.println("Введите число a");
+        float a = new Scanner(System.in).nextInt();
+        System.out.println("Введите число b");
+        float b = new Scanner(System.in).nextInt();
+
+        System.out.println("Результат: " + (((a + b) * coeficient(1, operation)) +
+                ((a - b) * coeficient(2, operation)) +
+                ((a * b) * coeficient(3, operation)) +
+                ((a / b) * coeficient(4, operation))));
+    }
+
+    static int coeficient(int value, int param) {
+        return value == param ? 1 : 0;
     }
 }
